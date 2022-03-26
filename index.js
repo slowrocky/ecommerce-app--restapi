@@ -1,12 +1,19 @@
 const express = require("express");
 const app = express();
 
-const port = 3000;
+const loaders = require('./loaders');
 
-app.get("/", (req, res) => {
-  res.send("Hello");
-});
+const {PORT} = require('./config');
 
-app.listen(port, () => {
-  console.log(`ecommerce REST API listening on port ${port}`);
-});
+async function startServer() {
+
+  // Init application loaders
+  loaders(app);
+
+  //Start server
+  app.listen(PORT, () => {
+    console.log(`Server listening on PORT ${PORT}`);
+  })
+}
+
+startServer();

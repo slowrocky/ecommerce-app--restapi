@@ -12,7 +12,7 @@ module.exports = class AuthService {
 
       // If user already exists, reject
       if (user) {
-        throw createError(409, 'Email already in use');
+        throw createError(409, "Email already in use");
       }
 
       // User doesn't exist, create new user record
@@ -31,12 +31,12 @@ module.exports = class AuthService {
 
       // If no user found, reject
       if (!user) {
-        throw createError(401, 'Incorrect username or password');
+        throw createError(401, "Incorrect username or password");
       }
 
       // Check for matching passwords
       if (user.password !== password) {
-        throw createError(401, 'Incorrect username or password');
+        throw createError(401, "Incorrect username or password");
       }
 
       return user;

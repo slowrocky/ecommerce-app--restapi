@@ -10,7 +10,7 @@ module.exports = class CartModel {
     this.isActive = data.isActive || true;
   }
 
-   /**
+  /**
    * Creates a new cart for a user
    * @param  {Object}      data [User data]
    * @return {Object|null}      [Created user record]
@@ -42,20 +42,18 @@ module.exports = class CartModel {
    */
   static async findOneByUser(userId) {
     try {
-      
       // Generate SQL statement
       const statement = `SELECT * FROM carts WHERE "userId" = $1`;
       const values = [userId];
 
       // Execute SQL statement
-      const result = await db.query(statement,values);
+      const result = await db.query(statement, values);
 
       if (result.rows?.length) {
         return result.rows[0];
       }
 
       return null;
-
     } catch (err) {
       throw new Error(err);
     }
@@ -68,7 +66,6 @@ module.exports = class CartModel {
    */
   static async findOneById(id) {
     try {
-      
       // Generate SQL statement
       const statement = `SELECT * FROM carts WHERE "id" = $1`;
       const values = [id];
@@ -85,5 +82,4 @@ module.exports = class CartModel {
       throw new Error(err);
     }
   }
-
 };
